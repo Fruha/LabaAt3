@@ -1025,7 +1025,6 @@ if __name__ == '__main__':
             print('choose program:')
             for i, program_name in enumerate(os.listdir('Programs')):
                 print(f'{i}){program_name}')
-            # print('1 - QuickSort \n2 - Factorial \n3 - Errors \n4 - Factorial recursion')
             num = int(input())
             if num < 0 or num >= len(prog_names):
                 print('Error: Wrong number\n')
