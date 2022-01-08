@@ -1,0 +1,33 @@
+function test_f(vector of int anything)
+begin
+anything[0] set 1;
+end
+return 0;
+
+function work()
+    begin
+    vector of int a0 set {0,0,0};
+    vector of vector of int a1 set { {1, 2}, {3, 4, 5}};
+    vector of vector of vector of int a2 set { {1, 2}, {3, 4}};
+    vector of vector of vector of int a3;
+    vector of vector of vector of int a4[-3];
+    int b1 set 5;
+    int b1 set -1;
+    bool b1 set true;
+    b2 set 1;
+    int b3[2][3] set 6;
+    vector of int b4 set {1, 2, 3, 4};
+    b4[5] set -1;
+    int b5 set a0 add b1;
+    int c1 set 200;
+    c1 set b4;
+    b4 set c1;
+    c1 set undecl;
+    c1[0] set 1;
+    not_func(1 2);
+    c1 set work();
+    test_f(c1);
+    move;
+    int d1 set d2;
+    end
+return 0;

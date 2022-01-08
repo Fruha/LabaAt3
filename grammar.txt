@@ -1,0 +1,89 @@
+program : stat_list
+stat_group : BEGIN NL stat_list END NL
+                    | statement
+stat_list : stat_list statement
+                    | statement
+                    | NL
+statement : declaration ENDSTR NL
+                    | assignment ENDSTR NL
+                    | sizeof ENDSTR NL
+                    | while
+                    | if
+                    | function
+                    | callfunc ENDSTR NL
+                    | command ENDSTR NL
+                    | ENDSTR NL
+declaration : type var_list
+var_list : variable
+                    | assignment
+                    | var_list COMMA var_list 
+assignment : variable SET expr
+assignment : variable SET arr_set
+assignment : variable SET error
+type : INT
+                    | SHORT INT
+                    | SHORT
+                    | BOOL
+type : vectorof
+vectorof : VECTOROF type
+                    | VECTOROF vectorof
+vectorof : VECTOROF type vectorof error
+digit : INTLIT
+                    | SHORTLIT
+bool : TRUE
+                    | FALSE
+                    | UNDEFINED
+expr : variable
+                    | const
+                    | callfunc
+                    | math_expr
+                    | command
+math_expr : expr ADD expr
+                    | expr SUB expr
+                    | expr FIRST SMALLER expr
+                    | expr SECOND LARGER expr
+                    | expr SECOND SMALLER expr
+                    | expr FIRST LARGER expr
+                    | expr OR expr
+                    | expr NOT OR expr
+                    | expr AND expr
+                    | expr NOT AND expr
+math_expr : expr SMALLER expr
+                    | expr LARGER expr
+expr : OPBR expr CLBR
+callfunc : STRLIT OPBR var_arr CLBR
+var_arr : variable
+                    | const
+                    | var_arr const
+                    | var_arr variable
+                    | 
+const : digit
+                    | bool
+                    | sizeof
+sizeof : SIZEOF OPBR type CLBR
+                    | SIZEOF OPBR variable CLBR
+arr_set : OPCUBR arr_set CLCUBR
+                    | OPCUBR const_arr CLCUBR
+                    | arr_set COMMA arr_set 
+const_arr : const
+                    | const COMMA const_arr
+variable : STRLIT
+                    | STRLIT index
+index : OPSQBR expr CLSQBR
+                    | OPSQBR expr CLSQBR index
+while : DO NL stat_group WHILE expr ENDSTR NL
+if : IF expr THEN NL stat_group ELSE NL stat_group
+                    | IF expr THEN NL stat_group ELSE ENDSTR NL
+if : IF expr error
+function : FUNCTION STRLIT OPBR typearr CLBR NL stat_group RETURN expr ENDSTR NL
+function : FUNCTION error
+typearr : typevar
+                    | typearr typevar
+                    | 
+typevar : type variable
+command : MOVE
+                    | MOVE RIGHT
+                    | MOVE LEFT
+                    | LEFT
+                    | RIGHT
+                    | LMS

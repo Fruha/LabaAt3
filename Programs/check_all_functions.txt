@@ -1,0 +1,102 @@
+function sum(vector of int a int n)
+    begin
+        int ans set 0;
+        do 
+            begin
+            n set n sub 1;
+            ans set ans add a[n];
+            end
+        while n first larger 0;
+    end
+return ans;
+
+function sum(vector of int a int n)
+    begin
+        int ans set 0;
+    end
+return ans;
+
+function work()
+begin
+    bool a0;
+    bool a1 set -2;
+    bool a2 set -0;
+    bool a3 set 2;
+    bool a4 set true;
+    bool a5 set false;
+    bool a6 set undefined;
+    int b1 set -10;
+    int b2 set 10;
+    short c1 set -12;
+    short c2 set 12;
+    vector of int d1 set {-2,-1,0,1,2};
+    vector of vector of int d2 set {{1, 2}, {3, 4}};
+    vector of vector of vector of int d3 set {{{1, 1},{1, 1}},{{1, 1},{1, 1}}};
+    vector of vector of vector of short Matrix2x3x2 set {{{1,2},{3,4},{4,5}},{{6,7},{8,9},{10,11}}};
+    vector of int d0 set {0,0,0,0,0};
+    d0 set d1;
+    bool e1 set b1;
+    short e2 set b2;
+    int e3 set d2[1][0];
+    int e4 set 123;
+    int e5 set s123;
+    bool f1 set (1 first larger 2);
+    bool f2 set (1 first smaller 2);
+    bool f3 set (1 second larger 2);
+    bool f4 set (1 second smaller 2);
+    bool f5 set (1 second smaller 1);
+    int g1 set (1 first larger 2);
+    int g2 set (1 first smaller 2);
+    int g3 set (1 second larger 2);
+    int g4 set (1 second smaller 2);
+    int g5 set (1 second smaller 1);
+    vector of int h1 set {1,2};
+    h1[0] set 3;
+    int i1 set sizeof(bool);
+    int i2 set sizeof(short);
+    int i3 set sizeof(int);
+    int i4 set sizeof(e1);
+    int j1 set (5 add 7);
+    int j2 set (5 sub 7);
+    bool k1 set (true or true);
+    bool k2 set (false or true);
+    bool k3 set (true or false);
+    bool k4 set (false or false);
+    bool l1 set (true and true);
+    bool l2 set (false and true);
+    bool l3 set (true and false);
+    bool l4 set (false and false);
+    bool m1 set (true not or true);
+    bool m2 set (false not or true);
+    bool m3 set (true not or false);
+    bool m4 set (false not or false);
+    bool n1 set (true not and true);
+    bool n2 set (false not and true);
+    bool n3 set (true not and false);
+    bool n4 set (false not and false);
+    bool o1 set (false and (false or true));
+    int p1 set 0;
+    do
+        begin
+        p1 set p1 add 1;
+        end
+    while p1 first smaller 5;
+    int q1 set -5;
+    if q1 first larger 0 then
+        q1 set 1;
+    else
+        q1 set -1;
+    int q2 set 5;
+    if q2 first larger 0 then
+        begin
+        q2 set 1;
+        end
+    else
+        begin
+        q2 set -1;
+        end
+    int q3 set -1;
+    vector of int r1 set {0,1,2,3};
+    int r2 set sum(r1 4);
+end
+return 0;

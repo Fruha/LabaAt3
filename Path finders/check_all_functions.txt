@@ -1,0 +1,24 @@
+function work()
+    begin
+    int b1 set lms;
+    int b2 set lms;
+    int a1 set move;
+    int b3 set lms;
+    int b4 set lms;
+    int a2 set move right;
+    int b5 set lms;
+    int b6 set lms;
+    int a3 set move;
+    int b7 set lms;
+    int b8 set lms;
+    int a4 set move right;
+    int b9 set lms;
+    int b10 set lms;
+    int a5 set move right;
+    int b11 set lms;
+    int b12 set lms;
+    int a6 set move;
+    int b13 set lms;
+    int b14 set lms;
+    end
+return 0;

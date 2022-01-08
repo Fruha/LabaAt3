@@ -1,0 +1,244 @@
+function work()
+begin
+solution();
+end
+return 0;
+
+function solution()
+begin
+    int i set 1;
+    int max_depth set 1000;
+    int is_wall set 1;
+    bool fl1 set false;
+    int next_checking set 0;
+    int direction_ set 1;
+    do
+        begin
+        check_exit(direction_);
+        check_exit(direction_);
+        is_wall set to(i);
+        max_depth set max_depth sub 1;
+        end
+    while ((is_wall first larger 0) or (is_wall first smaller 0)) and (max_depth first larger 0);
+    if max_depth first larger 0 then
+        do
+            begin
+            if fl1 first smaller 0 then
+                begin
+                i set turn_right(i);
+                end
+            else;
+            fl1 set false;
+            check_exit(direction_);
+            check_exit(direction_);
+            is_wall set to(i);
+            check_exit(direction_);
+            check_exit(direction_);
+            if (is_wall first smaller 1) and (is_wall first larger -1) then
+                begin
+                next_checking set try_L(direction_);
+                if (next_checking first larger 0) and ((i first smaller 0) and (i first larger -2)) then
+                    begin
+                    i set turn_left(i);
+                    is_wall set to(i);
+                    check_exit(direction_);
+                    check_exit(direction_);
+                    end
+                else
+                    begin
+                    to_back(i);
+                    check_exit(direction_);
+                    check_exit(direction_);
+                    i set turn_left(i);
+                    is_wall set to(i);
+                    check_exit(direction_);
+                    check_exit(direction_);
+                    end
+                fl1 set false;
+                if (is_wall first smaller 1) and (is_wall first larger -1) then
+                    begin
+                    next_checking set tryLU(direction_);
+                    if next_checking first larger 0 then
+                        begin
+                        i set turn_left(i);
+                        to(i);
+                        check_exit(direction_);
+                        check_exit(direction_);
+                        end
+                    else
+                        begin
+                        to_back(i);
+                        check_exit(direction_);
+                        check_exit(direction_);
+                        i set turn_left(i);
+                        fl1 set true;
+                        end
+                    end
+                else;
+                end
+            else;
+            max_depth set max_depth sub 1;
+            end
+        while max_depth first larger 0;
+    else;
+end
+return 0;
+
+function to(int direction)
+begin
+    int is_end set 0;
+    if direction first larger 0 then
+        begin
+        if direction first larger 1 then
+            is_end set move right;
+        else
+            is_end set to_up();
+        end
+    else
+        begin
+        if direction first smaller -1 then
+            is_end set move left;
+        else
+            is_end set to_down();
+        end
+end
+return is_end;
+
+function to_up()
+begin
+    int result set move;
+    if (result first smaller 0) then
+        begin
+        move;
+        result set 0;
+        end
+    else;
+end
+return result;
+
+function to_down()
+begin
+    int result set move;
+    if (result first larger 0) then
+        begin
+        move;
+        result set 0;
+        end
+    else;
+end
+return result;
+
+function turn_right(int i)
+begin
+    if i first smaller 0 then
+        if i first smaller -1 then
+            i set 1;
+        else
+            i set -2;
+    else
+        if i first larger 1 then
+            i set -1;
+        else
+            i set 2;
+end
+return i;
+
+function turn_left(int i)
+begin
+    if i first smaller 0 then
+        if i first smaller -1 then
+            i set -1;
+        else
+            i set 2;
+    else
+        if i first larger 1 then
+            i set 1;
+        else
+            i set -2;
+end
+return i;
+
+function to_back(int direction)
+begin
+    if direction first larger 0 then
+        if direction first larger 1 then
+            move left;
+        else
+            move;
+    else
+        if direction first smaller -1 then
+            move right;
+        else
+            move;
+end
+return 0;
+
+function tryLU(int direction_)
+begin
+    int result set lms;
+    if direction_ first larger 0 then
+        begin
+        result set lms;
+        direction_ set 0 sub direction_;
+        end
+    else;
+    if result first smaller 1 then
+        begin
+        if (result first smaller -1) or ((result first smaller 1) and (result first larger -1)) then
+            result set 1;
+        else
+            result set 0;
+        end
+    else;
+    direction_ set 0 sub direction_;
+end
+return result;
+
+function try_L(int direction_)
+begin
+    int result set lms;
+    if direction_ first smaller 0 then
+        begin
+        result set lms;
+        direction_ set 0 sub direction_;
+        end
+    else;
+    if result first larger -1 then
+        begin
+        if (result first larger 1) or ((result first smaller 1) and (result first larger -1)) then
+            result set 1;
+        else
+            result set 0;
+        end
+    else;
+    direction_ set 0 sub direction_;
+end
+return result;
+
+
+function check_exit(int direction_)
+begin
+    int scan set lms;
+    if (scan first larger 0) and (direction_ first smaller 0) then
+        begin
+        do
+            begin
+            move left;
+            scan set scan sub 1;
+            end
+        while scan first larger 0;
+        end
+    else
+        if (scan first smaller 0) and (direction_ first larger 0) then
+            begin
+            do
+                begin
+                move right;
+                scan set scan add 1;
+                end
+            while scan first smaller 0;
+            end
+        else;
+    direction_ set 0 sub direction_;
+end
+return 1;
